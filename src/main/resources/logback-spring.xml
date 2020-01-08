@@ -22,7 +22,7 @@
             </pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>E:\Horace\practice\log\info.%d.log</fileNamePattern>
+            <fileNamePattern>D:\software\java\log\info.%d.log</fileNamePattern>
         </rollingPolicy>
     </appender>
 
@@ -37,7 +37,7 @@
             </pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>E:\Horace\practice\log\error.%d.log</fileNamePattern>
+            <fileNamePattern>D:\software\java\log\error.%d.log</fileNamePattern>
         </rollingPolicy>
     </appender>
 
