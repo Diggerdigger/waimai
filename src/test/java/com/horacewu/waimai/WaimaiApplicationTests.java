@@ -9,6 +9,7 @@ class WaimaiApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

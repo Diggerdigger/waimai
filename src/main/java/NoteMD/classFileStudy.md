@@ -1,8 +1,12 @@
 https://chiclaim.blog.csdn.net/article/details/101778619
+https://www.cnblogs.com/pony1223/p/8640448.html
 https://leetcode-cn.com/
 https://www.nowcoder.com/
 
 位bit 字节Byte(8bit) 字
+
+Method method=clazz.getDeclaredMethod(name);//可以调用类中的所有方法（不包括父类中继承的方法）
+Method method=clazz.getMethod(name);//可以调用类中有访问权限的方法（包括父类中继承的方法）
 
 class 字节码文件剖析
 class 字节码文件是由一组以 8 位字节为基础单位的二进制流，各个数据项严格按照顺序紧凑地排列在字节码文件中，中间没有任何分隔符，
@@ -60,3 +64,15 @@ invokedynamic：在运行时动态解析出调用点(CallSite)限定符所引用
 方法重载解析 是在编译期通过静态类型去匹配重载的方法。因为上面的静态类型都是 Fruit 所以调用的都是 sell(Fruit fruit) 这个方法。
 
 方法重载解析 是在编译期确定方法调用的版本。动态分配是在运行时确定方法的版本。例如方法的覆写(override)，也就是类的多态性相关。
+
+只有一下6种主动使用的情况会导致类的初始化，其他任何情况都被视为是被动使用，不会导致类的初始化！
+1、创建类的实例
+2、访问某个类或接口的静态变量，或者对该静态变量赋值
+3、调用类的静态方法
+4、反射（如Class.forName(“com.yhj.jvm.classloader.finalTest.TestCase”)）
+5、初始化一个类的子类
+6、Java虚拟机启动时被标明为启动类的类（Java Test）
+除了以上6种情况都属于被动使用，不会导致类的初始化。
+
+调用编译时的静态常量并不会初始化这个类（即不属于主动使用），而调用运行时的静态常量是会初始化该类的！
+从加载到连接到初始化，我们看到loadClass只做加载和连接的操作，只有主动使用的6种才会对类进行初始化！
