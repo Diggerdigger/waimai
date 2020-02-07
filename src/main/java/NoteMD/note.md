@@ -34,3 +34,23 @@ String s3="abc" 在内存中只有一个对象，这个对象在字符串常量�
 String s4=new String("abc") 在内存中有两个对象。一个new的对象在堆中，一个字符串本身对象，在字符串常量池中
 
 StringBuilder比StringBuffer快，StringBuffer比StringBuilder安全？
+
+子类覆盖父类方法时，子类声明的异常只能是父类声明的异常，或者其声明的子类，或者不声明
+如果父类或者接口中没有声明异常，实现的子类覆盖方法发生了异常，子类方法无法进行throws声明，只能catch捕获处理，如果处理不了，在catch
+中继续thorw抛出，但是异常只能转成RuntimeException子类抛出
+
+transient和static修饰的变量不能被序列化
+
+Runnable接口对线程对象和线程任务进行解耦
+
+线程安全问题都是由全局变量及静态变量引起的（或者由数据库中的数据引起？）
+wait()notify()notifyAll()这些方法都是在同步中才有效，同时在使用时必须标明所属锁
+同步代码块的锁对向可以是任意的对象
+同步方法中的锁对象是this
+静态同步方法中的锁对象是 类对象 类名.class
+
+反射可用于泛型擦除
+
+在ssh2 项目中，struts2的action交由spring管理的时候，spring默认是singleton的，而struts2的action显然是有状 态的，
+所以必须显示设置为scope="prototype"，prototype为原型模式，每次action请求过来都会创建一个action。但是对那些Dao的实现类推介
+scope="singleton" ，因为这些类没有状态，用singleton只需维护一个实例，显然性能高一些
