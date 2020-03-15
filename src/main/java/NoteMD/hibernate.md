@@ -38,3 +38,20 @@ full join是left join和right join的集合
 
 inner join fetch迫切内连接，hql中使用，将返回结果放封装在一个对象中
 left join fetch迫切左外连接
+
+Hibernate 允许对关联对象、属性进行延迟加载，但是必须保证延迟加载的操作限于同一个 Hibernate Session 范围之内进行。如果 Service 
+层返回一个启用了延迟加载功能的领域对象给 Web 层，当 Web 层访问到那些需要延迟加载的数据时，由于加载领域对象的 Hibernate Session 
+已经关闭，这些导致延迟加载数据的访问异常，把一个Hibernate Session和一次完整的请求过程对应的线程相绑定。目的是为了实现
+"Open Session in View"的模式。例如： 它允许在事务提交之后延迟加载显示所需要的对象。
+
+Mybatis不完全是ORM框架，因为mybatis需要写sql，mybatis灵活，但无法做到数据库无关性，如果要实现支持多数据库，就要定义多套sql映射，工作量大
+Hibernate对象/关系映射能力强，数据库无关性好，但精通门槛高，需要设计O/R映射，在性能和对象模型之间权衡
+
+由于Hibernate的二级缓存是作用在SessionFactory范围内的，因而它比一级缓存的范围更广，可以被所有的Session对象所共享。
+在默认情况下，Hibernate会使用EHCache作为二级缓存组件。但是，可以通过设置 hibernate.cache.provider_class属性，
+指定其他的缓存策略，该缓存策略必须实现 org.hibernate.cache.CacheProvider接口。
+
+Mybatis
+<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="basePackage" value="com.some.path.mapper"/>
+</bean>

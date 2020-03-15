@@ -50,6 +50,11 @@ wait()notify()notifyAll()这些方法都是在同步中才有效，同时在使�
 静态同步方法中的锁对象是 类对象 类名.class
 
 反射可用于泛型擦除
+在java中Class.forName()和ClassLoader都可以对类进行加载。ClassLoader就是遵循双亲委派模型最终调用启动类加载器的类加载器，
+实现的功能是“通过一个类的全限定名来获取描述此类的二进制字节流”，获取到二进制流后放到JVM中。Class.forName()方法实际上也是调用的CLassLoader来实现的。
+Class.forName加载类时将类进了初始化，而ClassLoader的loadClass并没有对类进行初始化，只是把类加载到了虚拟机中。
+Spring框架中的IOC的实现就是使用的ClassLoader
+使用JDBC时通常是使用Class.forName()方法来加载数据库连接驱动。这是因为在JDBC规范中明确要求Driver(数据库驱动)类必须向DriverManager注册自己。
 
 在ssh2 项目中，struts2的action交由spring管理的时候，spring默认是singleton的，而struts2的action显然是有状 态的，
 所以必须显示设置为scope="prototype"，prototype为原型模式，每次action请求过来都会创建一个action。但是对那些Dao的实现类推介

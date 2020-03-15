@@ -11,7 +11,7 @@ redis基于内存,亦可持久化的日志型、Key-Value 数据库
 单个 redis 服务器上的请求是顺序执行的，因为 redis 服务器是单进程、单线程的。
 Redis支持的数据类型
 String   set key value,string类型是二进制安全的。意思是redis的string可以包含任何数据。比如jpg图片或者序列化的对象 。
-Hash     hmset name  key1 value1 key2 value2 存放的是结构化的对象 例子：存储用户信息，以cookieId作为key，设置30分钟为缓存过期时间，能很好的模拟出类似session的效果。
+Hash散列     hmset name  key1 value1 key2 value2 存放的是结构化的对象 例子：存储用户信息，以cookieId作为key，设置30分钟为缓存过期时间，能很好的模拟出类似session的效果。
 List
 Set      sadd  name  value  string类型的无序集合。集合是通过哈希表实现的，所以添加，删除，查找的复杂度都是O(1)。
                             全局去重的功能。为什么不用JVM自带的Set进行去重？因为我们的系统一般都是集群部署，使用JVM自带的Set，
